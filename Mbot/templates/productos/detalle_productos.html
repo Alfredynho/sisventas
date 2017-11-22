@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Detalle Producto {% endblock title %}
+{% block content %}
+<div class="wrapper"> 
+  <div class="content-wrapper">
+    <section class="content">          
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+          
+            <div class="box-header with-border">
+          		<a href="{% url 'productos:lista_productos' %}" class="btn btn-success">
+            		<span class="glyphicon glyphicon-chevron-left"></span> REGRESAR
+                </a>              
+	      		<div class="box-tools pull-right">
+	              <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+	            </div>
+            </div>
+              <div class="box-body">
+                  <table class="table table-striped table table-hover ">
+                        <thead>
+                            <tr>
+                             <th><h2> Producto: {{ object.numero_serie }}</h2></th>           
+                           </tr>
+                        </thead>
+	                      <tbody> 
+	                          <tr class="success"> 
+	                          	  <td><strong>Marca:</strong></td>                           
+	                              <td>{{ object.marca }}</td>
+	                          </tr>
+	                          <tr class="success">
+	                          	  <td><strong>Precio Compra:</strong></td>
+	                              <td>{{ object.precio_compra }} </td> 
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Precio Venta:</strong></td>
+	                              <td>{{ object.precio_venta }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Caracteristicas:</strong></td>
+	                              <td>{{ object.caracteristicas }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Proveedor:</strong></td>
+	                              <td>{{ object.proveedor }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Tipo:</strong></td>
+	                              <td>{{ object.tipo }}</td>                              
+	                           </tr>
+	                           <tr class="success">
+	                           	  <td><strong>Habilitado:</strong></td>
+	                           		{% if object.habilitado == True %}
+	                              		<td>Si</td>                              
+	                              	{% else %}
+	                              		<td>No</td>
+	                              	{% endif %}
+	                           </tr>
+	                       </tbody>
+	                </table>                             
+              </div>
+          </div>
+        </div>
+    </section>
+  </div>
+{% endblock content %}
+
+

@@ -1,0 +1,372 @@
+{% extends "base_master.html" %}
+{% load staticfiles %}
+{% block css %}
+
+   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/static/plugins/datatables/dataTables.bootstrap.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/dist/css/AdminLTE.min.css">
+
+    <link rel="stylesheet" href="/static/dist/css/skins/_all-skins.min.css">
+
+    <!-- calendario -->
+     <link href="/static/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+    <!--endcalendario-->
+
+{% endblock css %}
+
+ {% block js %}
+
+    <!-- jQuery 2.1.4 -->
+    <script src="/static/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="/static/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/static/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="/static/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="/static/plugins/fastclick/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/static/dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/static/dist/js/demo.js"></script>
+    <!-- page script -->
+    
+   <!-- datepicker --> 
+    <script src="/static/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+    
+    <script>
+      $(function () {
+        $('#example2').DataTable({
+          "language": {
+            "search": "Filter records:"
+          },
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+
+       $('#Date').datepicker({
+            autoclose: true,
+            todayHighlight: true
+            });
+       $('#Date1').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+
+
+        });
+
+     //reporte para fechas compras
+       $('#Fecha_i').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+
+        });
+
+       $('#Fecha_f').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+
+        });
+    </script>
+
+    <script>
+
+        var proceso = new Object();
+
+        proceso.tipoPro = 1;
+        proceso.producto = new Array();
+
+        var table = new Array();
+        var cliente = new Object();
+
+        $(document).ready(function() {
+            var table = $('#example').DataTable();
+            $('#example tbody').on( 'click', 'tr', function () {
+
+                if ($(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                    console.log("Sin seleccionar");
+                }
+                else {
+                    table.$('tr.selected').removeClass('selected');
+
+                    $(this).addClass('selected');
+                    console.log("seleccionado para borrar ");
+                    proceso.aux = new Array();
+                    proceso.producto.forEach(function(element) {
+                        proceso.aux.push({'serial': element['serial'], 'cantidad': element['cantidad']}); 
+                    });
+                    console.log("AUX ", proceso.aux);  
+                    proceso.producto = new Array();                  
+                }
+            } );
+
+            $('#deleteRow').click( function () {
+
+                var subtotalTr=0;
+                var t=0;
+                $('#example tbody tr.selected').each(function () {
+                    subtotalTr = $(this).find("td").eq(6).html();
+                    primary_key = $(this).find("td").eq(0).html();
+                    t = 13
+                });
+
+                    
+                proceso.aux.forEach(function(element) {
+
+                    if (element['serial'] == primary_key){
+                        console.log("ENCONTRADO LIMPIANDO ... ", primary_key);
+                    }else{
+                        proceso.producto.push({'serial': element['serial'], 'cantidad': element['cantidad']}); 
+                        console.log("VOLVIENDO A LLENANDO");
+                    }
+                });
+                
+                console.log(">>>>>>> ## $$$ ", proceso.producto);
+
+                console.log("El tt > ",subtotalTr);
+                console.log("El id > ",primary_key);
+
+                var sum_subtotal = document.getElementById ("sum-subtotal").innerText;
+                console.log('El valor anterior >>>>>>>$ ', sum_subtotal);
+
+                total = sum_subtotal - subtotalTr;
+
+                $('#sum-subtotal').text((total));
+
+                $('#sum-total').text(total*t);
+
+                table.row('.selected').remove().draw(false);
+
+                console.log("Eliminando ... ");
+                
+            } );
+        } );
+
+
+        $(document).ready(function(){
+            $("#c-buscar").click(function () {
+                var id = $('#cliente-id').val();
+                $.ajax({
+                    data: {'id':id},
+                    url: '/venta/buscar_cliente',
+                    type: 'get',
+                    success: function(data){
+                        //console.log(JSON.stringify(data));
+                        var html = ""
+                        if(data.length != 0){
+                            for (var i = 0; i < data.length; i++) {
+                                html += '<strong>Cliente</strong><br>';
+                                html += 'numero id: ' + data[i].pk + '<br>';
+                                html += 'Nombre: ' + data[i].fields.nombre + '<br>';
+                                html += 'Apellidos: ' + data[i].fields.apellidos + '<br>';
+                                html += 'Cedula: ' + data[i].fields.cedula + '<br>';
+                                html += 'Celular: ' + data[i].fields.celular + '<br>';
+
+                                cliente.pk = data[i].pk;
+                                cliente.nombre = data[i].fields.nombre;
+                                cliente.apellidos = data[i].fields.apellidos;
+                                cliente.cedula = data[i].fields.cedula;
+                                cliente.celular = data[i].fields.celular;
+                            }
+                            $("#c-seleccionar").attr("disabled", false);
+                        }else{
+                            html += '<strong>No existe un cliente con el numero de cedula</strong><br><button class="btn btn-primary" style="margin-right: 5px;"> Crear Usuario</button>';
+                            $("#c-seleccionar").attr("disabled", true);
+                        }
+                        $('#cliente-resultado').html(html);
+                    }
+                });
+            });
+
+            $("#c-seleccionar").click(function () {
+                proceso.clienProv = cliente.pk;
+                $("#c-id").text(cliente.cedula);
+                $("#c-nombre").text(cliente.nombre);
+                $("#c-apellidos").text(cliente.apellidos);
+                $("#c-cedula").text(cliente.cedula);
+                $("#c-celular").text(cliente.celular);
+                $('#buscarClienteModal').modal('hide');
+            });
+
+
+            $("#p-buscar").click(function () {
+                var id = $('#producto-id').val();
+                $.ajax({
+                    data: {'id':id},
+                    url: '/venta/buscar_producto',
+                    type: 'get',
+                    success: function(data){
+                        console.log(JSON.stringify(data));
+
+                        var html = ""
+                        if(data.length != 0){
+                            var sw = 0;
+                            for (var i = 0; i < data.length; i++) {
+                                html += '<br><strong>Producto</strong><br>';
+                                html += 'Serial: ' + data[i].fields.numero_serie + '<br>';
+                                html += 'Nombre: ' + data[i].fields.nombre + '<br>';
+                                html += 'Tipo: ' + data[i].fields.tipo + '<br>';
+                                html += 'Color: ' + data[i].fields.color + '<br>';
+
+                                if (data[i].fields.cantidad <= 0){
+                                    html += 'AGOTADO<br>';
+                                    sw = 1;
+                                }else{
+                                    html += 'Stock: ' + data[i].fields.cantidad + '<br>';
+                                    html += '<input type="number" name="p-cantidad" id="p-cantidad" placeholder="cantidad" min="1" max='+data[i].fields.cantidad+' >';
+                                }
+
+                                var fila = new Object();
+                                fila.pk = data[i].pk;
+                                fila.numero_serie = data[i].fields.numero_serie;
+                                fila.nombre = data[i].fields.nombre;
+                                fila.precio_venta = data[i].fields.precio_venta;
+                                fila.color = data[i].fields.color;
+                                fila.cantidad = 1;
+                                fila.descuento = 0;
+
+                                table.push(fila);
+                            }
+                            $('#producto-resultado').html(html);
+                            if (sw == 0){
+                                $("#p-seleccionar").attr("disabled", false);
+                            }else{
+                                $("#p-seleccionar").attr("disabled", true);
+                            }
+                        }else{
+                            html += '<strong>No existe Producto con ese code</strong><br>';
+                            html += '<a class="btn btn-primary" style="margin-right: 5px;" href="{% url "productos:crear_productos"%}"> Crear Producto</a>';
+
+                            $("#p-seleccionar").attr("disabled", true);
+                        }
+                        $('#producto-resultado').html(html);
+                    }
+                });
+            });
+
+          function deleteForm(btn, prefix) {
+            var formCount = parseInt($('#id_' + prefix + '-TOTAL_FORMS').val());
+            if (formCount > 1) {
+              $(btn).parents('.item').remove();
+
+              var forms = $('.item'); 
+
+              $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+
+              var i = 0;
+              for (formCount = forms.length; i < formCount; i++) {
+                $(forms.get(i)).children().children().each(function() {
+                  updateElementIndex(this, prefix, i);
+                });
+              }
+
+            } 
+            else {
+                alert("You have to enter at least one todo item!");
+            }
+            return false;
+          }
+
+
+            $("#p-seleccionar").click(function () {
+                console.log("Agregando Productos ");
+            var d = table;
+
+            var t = $('#example').DataTable();
+
+                if($('#p-cantidad').val() == ''){
+                    d[d.length-1].cantidad = 1;
+                }else{
+                    d[d.length-1].cantidad = $('#p-cantidad').val();
+                }
+
+                t.row.add( [
+                    d[d.length-1].pk,
+                    d[d.length-1].numero_serie,
+                    d[d.length-1].nombre,
+                    d[d.length-1].cantidad,
+                    'Bs ' + d[d.length-1].precio_venta,
+                    d[d.length-1].color,
+                    round((d[d.length-1].precio_venta)*d[d.length-1].cantidad*1,2).toFixed(2)
+                ] ).draw( false );
+
+                var html = ""
+
+                $('#producto-resultado').html(html);
+                $('#producto-id').val('');
+                $("#p-seleccionar").attr("disabled", true);
+                $('#buscarProductoModal').modal('hide');
+
+                proceso.producto.push({'serial': d[d.length-1].pk, 'cantidad': d[d.length-1].cantidad});
+                console.log("LO QUE ESTA ADENTRO ", proceso.producto);
+                calTotal();
+            });
+
+
+
+        });
+
+        function onEnviar(){
+            proceso.serie = $('#p-serie').val();
+            proceso.numero = $('#p-num').val();
+            console.log(JSON.stringify(proceso));
+            document.getElementById("proceso").value=JSON.stringify(proceso);
+        }
+
+
+        var total = 0;
+        function calTotal(){
+            var total=0;
+            var t=0;
+            $('#example tbody tr').each(function () {
+                total = total*1 + $(this).find("td").eq(6).html()*1;
+                t = 13;
+
+            });
+
+            $('#sum-subtotal').text((total));
+            $('#sum-tax').text(t.toFixed(2));
+
+            $('#sum-total').text(total*t);
+        }
+
+
+    function round(value, exp) {
+      if (typeof exp === 'undefined' || +exp === 0)
+        return Math.round(value);
+
+      value = +value;
+      exp  = +exp;
+
+      if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0))
+        return NaN;
+
+      // Shift
+      value = value.toString().split('e');
+      value = Math.round(+(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp)));
+
+      // Shift back
+      value = value.toString().split('e');
+      return +(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp));
+    }
+
+</script>
+
+
+{% endblock js %}

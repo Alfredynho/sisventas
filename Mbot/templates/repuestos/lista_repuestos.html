@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}Repuestos{% endblock title %}
+{% load i18n static %}
+
+{% block css %}
+<!-- DataTables -->
+  <link rel="stylesheet" href="/static/plugins/datatables/dataTables.bootstrap.css">
+<!-- DataTables -->
+
+{% endblock css %}
+
+{% block content %}
+    <div class="wrapper"> 
+      <div class="content-wrapper">
+        <section class="content-header">
+          <h1>            
+            Repuestos
+          </h1>
+        </section>
+
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">
+                      <a href="{% url 'repuestos:crear_repuestos' %}" class="btn btn-success">
+                      Nuevo
+                      </a>
+                    </h3>
+                    {% if user.empleado.tipo == "Gerente" %}
+                      <a  class="btn btn-primary pull-right" href="/repuestos/reporte">imprimir</a>
+                    {% endif %}
+                    <div class="box-tools pull-right">
+                      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                  </div>
+                  <div class="box-body">
+              <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                             <th>N°</th>                                                     
+                              <th>Numero Serie</th> 
+                              <th>Marca</th> 
+                              <th>Precio Venta</th> 
+                              <th>Nombre</th>
+                              <th>Imagen</th>
+                              <th>Habilitado</th>
+                              <th>Acciones</th>
+                           </tr>
+                        </thead>
+                      <tbody> 
+                      {% for repuesto in repuestos %}          
+
+                          <tr> 
+                              <td align="center">{{ forloop.counter}}</td>                             
+                              <td align="center">{{ repuesto.numero_serie }} </td> 
+                              <td align="center">{{ repuesto.marca }}</td>
+                              <td align="center">{{ repuesto.precio_venta }}</td>
+                              <td align="center"><b style="color:blue;">{{ repuesto.nombre| capfirst }}</b></td>   
+
+                              {% if repuesto.imagen %}
+                                  <td align="center"><img src={{ repuesto.imagen.url }} width=50 height=50 class="img-circle" /></td>
+                              {% else %}
+                                  <td align="center"><img src="{% static 'img/bot.png' %}" width=50 height=50 class="img-circle" /></td>
+                              {% endif %}
+
+                              {% if repuesto.habilitado == True %}
+                                  <td align="center">Si</td>
+                              {% else %}
+                                  <td align="center">No</td>
+                              {% endif %}
+                              
+                              <td class="text-right">
+                                  <center>
+                                  <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                  <a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    {% if user.empleado.tipo == 'Gerente' %}
+                                        <a href="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a> </center>
+                                    {% endif %}
+                              </td>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer class="main-footer">
+{% endblock content %}
+
+{% block extrajs %}
+<!-- DataTables -->
+<script src="/static/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+<!-- SlimScroll -->
+<script src="/static/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/static/plugins/fastclick/fastclick.min.js"></script>
+
+    <script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+       </script>
+{% endblock extrajs %}

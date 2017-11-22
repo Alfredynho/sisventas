@@ -1,0 +1,83 @@
+{% load i18n static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <div class="wrapper">
+    <header class="main-header">
+      <a href="#" class="logo">
+        <span class="logo-mini"><b>U</b>SM</span>
+        <span class="logo-lg"><b>USMOTOS</b></span>
+      </a>
+      <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">           
+             <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {% if user.empleado.imagen %}
+                  <img src="{{ user.empleado.imagen.url }}" class="img-circle" alt="User Image" height="20" width="20" > 
+                {% else %}
+                  <img src="{% static 'img/bot.png' %}" class="img-circle" alt="User Image" height="20" width="20" > 
+                {% endif %}
+                <span class="hidden-xs">{{ user.empleado.nombre|capfirst }} {{ user.empleado.apellidos|capfirst }}</span>
+
+              </a>
+              <ul class="dropdown-menu">
+                <li class="user-header">
+                  {% if user.empleado.imagen %}
+                    <img src="{{ user.empleado.imagen.url }}" class="img-circle" alt="User Image" > 
+                  {% else %}
+                    <img src="{% static 'img/bot.png'%}" class="img-circle" alt="User Image" > 
+                  {% endif %}
+                   <p>
+                     {{ user.empleado.nombre|capfirst }} {{ user.empleado.apellidos|capfirst }}
+                  </p>
+                </li>
+
+                <li class="user-footer">
+                  <div class="pull-left">
+                  </div>
+                  <div class="pull-right">
+                    <a href="{% url 'logout' %}" class="btn btn-default btn-flat">Salir</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <aside class="main-sidebar">
+      <section class="sidebar">
+        <div class="user-panel">
+          <div class="pull-left image">
+            {% if user.empleado.imagen %}
+              <img src="{{ user.empleado.imagen.url }}" class="img-circle" alt="User Image" > 
+            {% else %}
+              <img src="{% static 'img/bot.png' %}" class="img-circle" alt="User Image" > 
+            {% endif %}
+          </div>
+          <div class="pull-left info">
+            <p>{{ user.empleado.nombre|capfirst }} {{ user.empleado.apellidos|capfirst }}</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> {{ user.username | capfirst }}</a>
+          </div>
+        </div>
+
+        <ul class="sidebar-menu">
+          <li class="header"><center>{{ user.empleado.tipo |upper }}</center></li>
+        
+        {% if user.empleado.tipo == "Gerente" %}
+            {% include "nav_empleados/gerente.html" %}
+        {% elif user.empleado.tipo == "Vendedor" %}
+            {% include "nav_empleados/vendedor.html" %}
+        {% elif user.empleado.tipo == "Mecanico" %}
+            {% include "nav_empleados/mecanico.html" %}
+        {% endif %}
+
+      </section>
+    </aside>

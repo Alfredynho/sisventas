@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Modificar Chiste{% endblock title %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+
+<div class="wrapper"> 
+  <div class="content-wrapper">
+        <section class="content-header">
+          <h1>            
+            CHISTE
+          </h1>
+        </section>
+    <section class="content">          
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+             
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+                       
+            </div>
+              <div class="box-body"> 
+    
+            <div class="row">
+              <div class="col-lg-12">
+                  <form class="form-horizontal" method="post" autocomplete="off">
+                    {% csrf_token %}
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">  
+
+                            <div class="form-group has-success has-feedback  {% if form.titulo.errors %} has-error {% endif %}">
+                                 <label class="control-label col-sm-3" for="inputSuccess3">{{ form.titulo.label_tag }}
+                                 </label>
+                                 <div class="col-sm-4">
+                                    {{ form.titulo }}
+                                </div>
+                             </div>
+
+                             <div class="form-group has-success has-feedback  {% if form.descripcion.errors %} has-error {% endif %}">
+                                 <label class="control-label col-sm-3" for="inputSuccess3">{{ form.descripcion.label_tag }}
+                                 </label>
+                                 <div class="col-sm-6">
+                                    {{ form.descripcion }}
+                                </div>
+                             </div>
+
+                        <div class="form-group has-success has-feedback  {% if form.habilitado.errors %} has-error {% endif %}">
+                          <label class="control-label col-sm-3" for="inputSuccess3">{{ form.habilitado.label_tag }}</label>
+                          <div class="col-sm-6">  
+                               {{ form.habilitado}}              
+                          </div>
+                        </div>  
+                        <div class="pull-right" >
+                            <button type="submit" class="btn btn-sm btn-success m-r-5"><i class="fa fa-cog"></i> GUARDAR</button>
+                        </div>
+                    </div>
+                    </div>             
+                  </form>
+              </div>
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>
+    </section>
+  </div>
+
+{% endblock content %}
+
+{% block extrajs %}
+
+    <script>
+
+       $('#Date').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        });
+
+       $('#Date1').datepicker({
+          autoclose: true,
+          todayHighlight: true
+        });
+
+    </script>
+
+{% endblock extrajs %}

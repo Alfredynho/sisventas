@@ -1,0 +1,32 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>SIGIA | Inicio Sesión</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    
+    {% include "includes/css.html" %}
+</head>
+<body>
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    
+    {% block content %}
+
+    {% endblock %}
+
+    {% include "includes/javascript.html" %}
+    <script src="{% static 'color_admin/assets/js/login-v2.demo.min.js' %}"></script>
+    <script src="{% static 'color_admin/assets/js/apps.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+            App.init();
+            LoginV2.init();
+        });
+    </script>
+</body>
+</html>

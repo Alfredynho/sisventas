@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Eliminar Propaganda{% endblock title %}
+{% block content %}
+ 
+<div class="wrapper"> 
+  <div class="content-wrapper">
+    <section class="content">          
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <i class="fa fa-bullhorn"></i>             
+            </div>
+              <div class="box-body">
+                  <div class="callout callout-danger">                    
+                    <h1> ELIMINAR</h1>
+                    <form method="POST">
+                    {% csrf_token %}
+                      <p class="coloreliminar">¿Desea eliminar la propaganda "{{ object.nombre }}?</p>
+                      <input type="submit" value="Sí" class="btn btn-warning"> 
+                      <a href="{% url 'propagandas:lista_propagandas' %}" class="btn btn-info">No</a>
+                    </form>                        
+                  </div>                                   
+              </div>
+          </div>
+        </div>
+    </section>
+  </div>
+
+{% endblock content %}
+

@@ -1,0 +1,272 @@
+[
+  {
+    "fields": {
+      "cantidad": 393,
+      "caracteristicas": "Son motos a las que, de fábrica, se les han eliminado todos los elementos accesorios. No tienen carenado y la mayor parte de su mecánica queda al descubierto. Dentro de las motos naked podemos encontrar el estilo roadster (ideales para viajes) o streetfighter (para un uso más deportivo).",
+      "color": "PLOMO",
+      "habilitado": true,
+      "imagen": "imagenes/productos/DRAGON2016.jpg",
+      "marca": "USM",
+      "nombre": "Scooter 2001",
+      "numero_serie": "USM-1001",
+      "precio_compra": "2300.00",
+      "precio_venta": "2400.00",
+      "proveedor": 1,
+      "tipo": "Scooter"
+    },
+    "model": "producto.producto",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "cantidad": 500,
+      "caracteristicas": "Son motos a las que, de fábrica, se les han eliminado todos los elementos accesorios. No tienen carenado y la mayor parte de su mecánica queda al descubierto. Dentro de las motos naked podemos encontrar el estilo roadster (ideales para viajes) o streetfighter (para un uso más deportivo).",
+      "color": "VERDE",
+      "habilitado": true,
+      "imagen": "imagenes/productos/DRAGON2016_jCoO4pA.jpg",
+      "marca": "USM",
+      "nombre": "Scooter 2003",
+      "numero_serie": "USM-1002",
+      "precio_compra": "2400.00",
+      "precio_venta": "2600.00",
+      "proveedor": 1,
+      "tipo": "Scooter"
+    },
+    "model": "producto.producto",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "cantidad": 400,
+      "caracteristicas": "Son motos a las que, de fábrica, se les han eliminado todos los elementos accesorios. No tienen carenado y la mayor parte de su mecánica queda al descubierto. Dentro de las motos naked podemos encontrar el estilo roadster (ideales para viajes) o streetfighter (para un uso más deportivo).",
+      "color": "AZUL PLATEADO",
+      "habilitado": true,
+      "imagen": "imagenes/productos/DRAGON2016_yNe6ddl.jpg",
+      "marca": "USM",
+      "nombre": "Scooter 2005",
+      "numero_serie": "USM-1003",
+      "precio_compra": "2300.00",
+      "precio_venta": "2400.00",
+      "proveedor": 1,
+      "tipo": "Scooter"
+    },
+    "model": "producto.producto",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "cantidad": 400,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Verde",
+      "habilitado": true,
+      "imagen": "imagenes/productos/cruisser250AZUL.jpg",
+      "marca": "USM",
+      "nombre": "Urbana 2001",
+      "numero_serie": "USM-2001",
+      "precio_compra": "2400.00",
+      "precio_venta": "2500.00",
+      "proveedor": 2,
+      "tipo": "Urbana"
+    },
+    "model": "producto.producto",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "cantidad": 300,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Negro",
+      "habilitado": true,
+      "imagen": "",
+      "marca": "USM",
+      "nombre": "Urbana 2009",
+      "numero_serie": "USM-2002",
+      "precio_compra": "2300.00",
+      "precio_venta": "2400.00",
+      "proveedor": 2,
+      "tipo": "Urbana"
+    },
+    "model": "producto.producto",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "cantidad": 300,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Rojo",
+      "habilitado": true,
+      "imagen": "imagenes/productos/cruisser250AZUL_WvZd3B1.jpg",
+      "marca": "USM",
+      "nombre": "Urbana",
+      "numero_serie": "USM-2003",
+      "precio_compra": "2300.00",
+      "precio_venta": "2500.00",
+      "proveedor": 2,
+      "tipo": "Urbana"
+    },
+    "model": "producto.producto",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "cantidad": 300,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Rojo",
+      "habilitado": true,
+      "imagen": "imagenes/productos/TANQUE.jpg",
+      "marca": "USM",
+      "nombre": "Trabajo 2001",
+      "numero_serie": "USM-3001",
+      "precio_compra": "4500.00",
+      "precio_venta": "4800.00",
+      "proveedor": 3,
+      "tipo": "Trabajo"
+    },
+    "model": "producto.producto",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "cantidad": 400,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Azul",
+      "habilitado": true,
+      "imagen": "imagenes/productos/TANQUE_1dEC6Tx.jpg",
+      "marca": "USM",
+      "nombre": "Trabajo 2005",
+      "numero_serie": "USM-3002",
+      "precio_compra": "2300.00",
+      "precio_venta": "2340.00",
+      "proveedor": 2,
+      "tipo": "Trabajo"
+    },
+    "model": "producto.producto",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "cantidad": 300,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Plomo",
+      "habilitado": true,
+      "imagen": "imagenes/productos/TANQUE_SeQrCMz.jpg",
+      "marca": "USM",
+      "nombre": "Trabajo 2000",
+      "numero_serie": "USM-3003",
+      "precio_compra": "3444.00",
+      "precio_venta": "3566.00",
+      "proveedor": 2,
+      "tipo": "Trabajo"
+    },
+    "model": "producto.producto",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "cantidad": 3000,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Negro",
+      "habilitado": true,
+      "imagen": "imagenes/productos/GLT150.jpg",
+      "marca": "USM",
+      "nombre": "Touring 5005",
+      "numero_serie": "USM-4001",
+      "precio_compra": "5000.00",
+      "precio_venta": "5600.00",
+      "proveedor": 1,
+      "tipo": "Touring"
+    },
+    "model": "producto.producto",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "cantidad": 296,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Verde",
+      "habilitado": true,
+      "imagen": "imagenes/productos/DRAGON2016_SoSm6Ha.jpg",
+      "marca": "USM",
+      "nombre": "Cross 3003",
+      "numero_serie": "USM-5001",
+      "precio_compra": "2300.00",
+      "precio_venta": "2340.00",
+      "proveedor": 1,
+      "tipo": "Cross"
+    },
+    "model": "producto.producto",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "cantidad": 3998,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Rojo",
+      "habilitado": true,
+      "imagen": "imagenes/productos/-STREED-FT.jpg",
+      "marca": "USM",
+      "nombre": "Naked 3003",
+      "numero_serie": "USM-8001",
+      "precio_compra": "3400.00",
+      "precio_venta": "3500.00",
+      "proveedor": 3,
+      "tipo": "Naked"
+    },
+    "model": "producto.producto",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "cantidad": 496,
+      "caracteristicas": "El significado de “trail” es algo así como “sendero”, con lo cual nos podemos hacer una idea del ámbito en el que estas motos son más efectivas. Son motos altas y pesadas, que suelen calzar neumáticos mixtos. Están pensadas para largas rutas por fuera de carretera, aunque también están preparadas para circular sobre asfalto. Este tipo de motos son las que participan en raids como el Dakar.",
+      "color": "Rojo",
+      "habilitado": true,
+      "imagen": "imagenes/productos/-STREED.jpg",
+      "marca": "USM",
+      "nombre": "Naked 6002",
+      "numero_serie": "USM-8002",
+      "precio_compra": "5000.00",
+      "precio_venta": "6000.00",
+      "proveedor": 2,
+      "tipo": "Naked"
+    },
+    "model": "producto.producto",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "cantidad": 190,
+      "caracteristicas": "Casco para proteccion de cabeza",
+      "color": "Negro",
+      "habilitado": true,
+      "imagen": "imagenes/productos/casco.jpg",
+      "marca": "USM",
+      "nombre": "Casco",
+      "numero_serie": "USM-6001",
+      "precio_compra": "230.00",
+      "precio_venta": "280.00",
+      "proveedor": 3,
+      "tipo": "Accesorio"
+    },
+    "model": "producto.producto",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "cantidad": 192,
+      "caracteristicas": "Guantes para motos",
+      "color": "Negro",
+      "habilitado": true,
+      "imagen": "imagenes/productos/Guantes-Fox-Bomber.jpg",
+      "marca": "USM",
+      "nombre": "Guantes",
+      "numero_serie": "USM-6002",
+      "precio_compra": "230.00",
+      "precio_venta": "270.00",
+      "proveedor": 1,
+      "tipo": "Accesorio"
+    },
+    "model": "producto.producto",
+    "pk": 15
+  }
+]

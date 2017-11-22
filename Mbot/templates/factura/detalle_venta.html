@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalle Factura</title>
+    <link rel="stylesheet" href="{% static 'css/custom/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/imprimir.css' %}" media="print">
+    <script type="text/javascript" src="/static/js/qrcode.js"></script>
+
+</head>
+<body class="imprimir">
+    <a href="" onclick="window.print()" class="boton-imprimir">IMPRIMIR</a>
+    <section class="form-general datos-generales">
+        <div class="d-contenedor"></br></br></br></br>
+            <h2>"USMOTOS BOLIVIA S.R.L."</h2>
+            <h3>Casa Matriz </h3>
+            <h4>Avenida Panama esq. Brasil , Zona Miraflores La Paz </h4>
+            <div class="cnt-inputs">
+                <img src="{% static '/img/usm.png'%}" heigth="120" width="120" class="img-circle" align="left">
+                <ul>
+                    <li>
+                        <h3>NIT: 149992024</h3>
+                        <h3>Número Factura :{{ compra.id }}</h3>
+                        <h3>Cliente: {{ compra.cliente }} </h3>                       
+                        <h3>Cedula: {{ compra.cliente.cedula }} </h3>                       
+                        <h3 id="_fecha">Fecha: {{ compra.fecha|date:"m-d-y" }}</h3>
+                    </li>   
+                </ul>
+            </div>
+        </div>
+
+    <div class="d-contenedor">
+            
+    <div class="cnt-inputs">
+        <table border=3>
+        ----------------------------------------------------------------------------------------------------------------------------
+            <tr>
+                <th><h2>Nro</h2></th>
+                <th><h2>Productos</h2></th>
+                <th><h2>Precio</h2></th>
+                <th><h2>Cantidad</h2></th>
+                <th><h2>Total</h2></th>         
+            </tr>
+
+            {%for a in detalle_venta %}
+                <tr>
+                <td><h2 align="center">{{ forloop.counter }}</h2></td> 
+                <td><h2 align="center">{{ a.producto.nombre }}</h2></td>
+                <td><h2 align="center">{{ a.producto.precio_venta }}</h2></td>
+                <td><h2 align="center">{{ a.cantidad }}</h2></td>    
+                <td><h2 align="center">{{ a.subtotal }} Bs.</h2></td>
+                </tr>
+            {% endfor %}
+            <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+            <div class="total">
+                <label>TOTAL Bs</label>
+                <label id="_costoTotal">{{ compra.total }}</label>
+            </div></td>
+            </tr>
+        </table>
+            ----------------------------------------------------------------------------------------------------------------------------
+            <div class="cnt-inputs">
+                <ul>                    
+                    <li>
+                        <h3>Hora de Impresion: {{ hora }}</h3>                      
+                        <h3>Vendedor: {{ compra.vendedor.empleado.nombre }}  / {{ compra.vendedor}} </h3>
+                        <h3>Cargo: {{ compra.vendedor.empleado.tipo }}</h3>
+                        <h3>Teléfono: 2115635</h3>
+                    </li>   
+                </ul>
+            </div>
+            <div class="total">
+                <div align="center" id="codeQr"></div>
+            </div>
+
+            <h1 align="center"> GRACIAS POR SU COMPRA </h1>
+            <script type="text/javascript">
+                var typeNumber = 7;
+                var _date = document.getElementById ("_fecha").innerText;
+                var _date = _date.split('Fecha: ');
+                var code_control = {{ compra.cliente.cedula }}+"|"+{{compra.id}}
+                var qrcodejs = "149992024|"+"5970007756305"+"|"+_date+"|"+{{ compra.cliente.cedula }} +"|"+"543555|"+"|"+code_control;
+                console.log("Codigo QR",qrcodejs);
+                var errorCorrectionLevel = 'H';
+                var qr = qrcode(typeNumber, errorCorrectionLevel);
+                qr.addData(qrcodejs);
+                qr.make();
+                document.getElementById('codeQr').innerHTML = qr.createImgTag();
+            </script>
+            </div>
+        </div>
+    <section>
+</html>

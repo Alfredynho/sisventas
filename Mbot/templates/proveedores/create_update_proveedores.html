@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Modificar Proveedor{% endblock title %}
+
+{% load bootstrap3 %}
+
+{% block content %}
+
+<div class="wrapper"> 
+  <div class="content-wrapper">
+        <section class="content-header">
+          <h1>            
+            PROVEEDOR
+          </h1>
+        </section>
+    <section class="content">          
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-info">
+            <div class="box-header with-border">
+             
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+                       
+            </div>
+              <div class="box-body"> 
+    
+              <div class="row">
+                <div class="col-lg-12">
+                  <form class="form-horizontal" method="post">
+                    {% csrf_token %}
+                      <div class="row">
+                          <div class="col-md-8 col-md-offset-2">
+                              <div id="forms">
+                                {% bootstrap_form form %}
+                              </div>
+                              <div class="pull-right" >
+                                  <button type="submit" class="btn btn-sm btn-success m-r-5"><i class="fa fa-cog"></i> MODIFICAR</button>
+                              </div>
+                          </div>
+                      </div>             
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+    </section>
+  </div>
+
+{% endblock content %}

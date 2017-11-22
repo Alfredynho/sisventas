@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+{% block title %}Lista Productos{% endblock title %}
+{% load i18n static %}
+
+{% block content %}
+    <div class="wrapper">
+      <div class="content-wrapper">
+        <section class="content-header">
+          <h1>
+            LISTA PRODUCTOS
+          </h1>
+        <div class="callout callout-info">
+          </br>
+          <p>Para que los productos puedan ser visualizados por los clientes en el chat bot se debe tener un maximo de 10 productos activos por categoria, y minimo 1 activo </p>
+        </div>
+        </section>
+
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box box-primary">
+                  <div class="box-header with-border">
+                    <h3 class="box-title">
+                      <a href="{% url 'productos:lista_productos' %}" class="btn btn-info">
+                      PRODUCTOS
+                      </a>
+                    </h3>
+
+                    <h3 class="box-title">
+                      <button  id="naked" href="#" class="btn btn-success" value="Naked">
+                      <i class="fa fa-motorcycle"></i> NAKED </br><span class="pull-center badge bg-blue">{{ naked }}</span>
+                      </button>
+                    </h3>
+
+
+                    <h3 class="box-title">
+                      <button  id="scooter" href="#" class="btn btn-success" value="Scooter">
+                      <i class="fa fa-motorcycle"></i> SCOOTER </br><span class="pull-center badge bg-blue"> {{ scooter }}</span>
+                      </button>
+                    </h3>
+
+                    <h3 class="box-title">
+                      <button  id="urbana" href="#" class="btn btn-success" value="Urbana">
+                      <i class="fa fa-motorcycle"></i> URBANA </br><span class="pull-center badge bg-blue"> {{ urbana }}</span>
+                      </button>
+                    </h3>
+
+                    <h3 class="box-title">
+                      <button  id="touring" href="#" class="btn btn-success" value="Touring">
+                      <i class="fa fa-motorcycle"></i> TOURING </br><span class="pull-center badge bg-blue"> {{ touring }}</span>
+                      </button>
+                    </h3>
+
+                    <h3 class="box-title">
+                      <button  id="crucero" href="#" class="btn btn-success" value="Crucero">
+                      <i class="fa fa-motorcycle"></i> CRUCERO </br><span class="pull-center badge bg-blue"> {{ crucero }}</span>
+                      </button>
+                    </h3>
+
+                    <h3 class="box-title">
+                      <button  id="atv" href="#" class="btn btn-success" value="atv">
+                      <i class="fa fa-motorcycle"></i> ATV </br><span class="pull-center badge bg-blue"> {{ atv }}</span>
+                      </button>
+                    </h3>
+
+                    <h3 class="box-title">
+                      <button  id="deportiva" href="#" class="btn btn-success" value="Deportiva">
+                      <i class="fa fa-motorcycle"></i> DEPORTIVA </br><span class="pull-center badge bg-blue"> {{ deportiva }}</span>
+                      </button>
+                    </h3>
+
+                    <h3 class="box-title">
+                      <button  id="accesorio" href="#" class="btn btn-success" value="Accesorio">
+                      <i class="fa fa-spinner"></i> ACCESORIO </br><span class="pull-center badge bg-blue"> {{ accesorio }}</span>
+                      </button>
+                    </h3>
+
+                    <h3 class="box-title">
+                      <button  id="cross" href="#" class="btn btn-success" value="Cross">
+                      <i class="fa fa-motorcycle"></i> CROSS </br><span class="pull-center badge bg-blue"> {{ cross }}</span>
+                      </button>
+                    </h3>
+
+                    <div class="box-tools pull-right">
+                      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                  </div>
+
+    					<div id="datos">
+    						
+    					</div>
+
+					     </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer class="main-footer">
+{% endblock content %}
+
+{% block extrajs %}
+
+    <script type="text/javascript">
+        $( "#naked" ).click(function() {
+          var id = $('#naked').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+        $( "#scooter" ).click(function() {
+          var id = $('#scooter').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+        $( "#urbana" ).click(function() {
+          var id = $('#urbana').val();
+          console.log("id ", id);
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              console.log("Contados ",i);
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+        $( "#trabajo" ).click(function() {
+          var id = $('#trabajo').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+
+        $( "#touring" ).click(function() {
+          var id = $('#touring').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+
+        $( "#crucero" ).click(function() {
+          var id = $('#crucero').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+
+        $( "#atv" ).click(function() {
+          var id = $('#atv').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+
+        $( "#deportiva" ).click(function() {
+          var id = $('#deportiva').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+
+        $( "#accesorio" ).click(function() {
+          var id = $('#accesorio').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+
+        $( "#cross" ).click(function() {
+          var id = $('#cross').val();
+        $.ajax({
+          data:{'id':id},
+          url: '/productos/busqueda_producto/',
+          type:'get',
+          success: function(data){
+            var html =""
+            for(var i =0; i<data.length;i++){
+              html+='<div class="box-body table-responsive no-padding"><table class="table table-hover"><tr><th>Numero Serie</th><th>Nombre</th><th>Color</th><th>Tipo</th><th>Modificar</th></tr><tr><td>'+data[i].fields.numero_serie+'</td><td>'+data[i].fields.nombre+'</td><td>'+data[i].fields.color+'</td><td><span class="label label-success">'+data[i].fields.tipo+'</span></td><td><a href="./modificar/'+data[i].pk+'/" class="btn btn-success" >Modificar</a></td></tr></table></div>'
+            }
+            $('#datos').html(html);
+          }
+        });
+      }); 
+
+    </script>
+
+{% endblock extrajs %}
